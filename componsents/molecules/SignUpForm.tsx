@@ -8,7 +8,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { PasswordField } from "./PasswordField";
+import { PasswordField } from "../atoms/PasswordField";
 
 export const SignUpForm = (props: HTMLChakraProps<"form">) => (
   <chakra.form
