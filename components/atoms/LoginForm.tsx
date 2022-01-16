@@ -8,7 +8,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { PasswordField } from "../atoms/PasswordField";
+import { SignInPasswordField } from "./SignIn/SignInPasswordField";
 
 export const LoginForm = (props: HTMLChakraProps<"form">) => (
   <chakra.form
@@ -23,7 +23,7 @@ export const LoginForm = (props: HTMLChakraProps<"form">) => (
         <FormLabel>Email address</FormLabel>
         <Input name="email" type="email" autoComplete="email" required />
       </FormControl>
-      <PasswordField />
+      <SignInPasswordField />
       <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
         Sign in
       </Button>

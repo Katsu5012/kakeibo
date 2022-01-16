@@ -9,11 +9,11 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Card } from "../componsents/atoms/Card";
-import { DividerWithText } from "../componsents/atoms/DividerWithText";
-import { Link } from "../componsents/atoms/Link";
-import { LoginForm } from "../componsents/molecules/LoginForm";
-import { Logo } from "../componsents/atoms/Logo";
+import { Card } from "../components/atoms/app/Card";
+import { DividerWithText } from "../components/atoms/app/DividerWithText";
+import { Link } from "../components/atoms/app/Link";
+import { LoginForm } from "../components/atoms/LoginForm";
+import { Logo } from "../components/atoms/app/Logo";
 
 const SignIn = () => {
   return (

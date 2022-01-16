@@ -7,7 +7,11 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { Card } from "../componsents/atoms/Card";
+import { Card } from "../../components/atoms/app/Card";
+
+/*
+ * 支出の作成Page
+ */
 const createDisbursement = () => {
   return (
     <>

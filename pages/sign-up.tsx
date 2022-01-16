@@ -3,19 +3,26 @@ import {
   Button,
   Heading,
   SimpleGrid,
-  Text,
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Card } from "../componsents/atoms/Card";
-import { DividerWithText } from "../componsents/atoms/DividerWithText";
-import { Link } from "../componsents/atoms/Link";
-import { SignUpForm } from "../componsents/molecules/SignUpForm";
-import { Logo } from "../componsents/atoms/Logo";
+import { useState } from "react";
+import { Card } from "../components/atoms/app/Card";
+import { SignUpForm } from "../components/molecules/SignUpForm";
+import { NextPage } from "next";
+import { signUpAPI } from "../api/signup";
 
-const SignUp = () => {
+const SignUp: NextPage = () => {
+  const [userName, setUserName] = useState("");
+  console.log(userName);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSubmit = async (e: React.FormEvent) => {
+    console.log(e);
+    await signUpAPI(userName, email, password);
+  };
   return (
     <Box
       bg={useColorModeValue("gray.50", "inherit")}
@@ -24,31 +31,16 @@ const SignUp = () => {
       px={{ base: "4", lg: "8" }}
     >
       <Box maxW="md" mx="auto">
-        <Logo mx="auto" h="8" mb={{ base: "10", md: "20" }} />
         <Heading textAlign="center" size="xl" fontWeight="extrabold">
-          Sign in to your account
+          Sign Up to your account
         </Heading>
-        <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
-          <Text as="span">Don&apos;t have an account?</Text>
-          <Link href="#">Start free trial</Link>
-        </Text>
         <Card>
-          <SignUpForm />
-          <DividerWithText mt="6">or continue with</DividerWithText>
-          <SimpleGrid mt="6" columns={3} spacing="3">
-            <Button color="currentColor" variant="outline">
-              <VisuallyHidden>Login with Facebook</VisuallyHidden>
-              <FaFacebook />
-            </Button>
-            <Button color="currentColor" variant="outline">
-              <VisuallyHidden>Login with Google</VisuallyHidden>
-              <FaGoogle />
-            </Button>
-            <Button color="currentColor" variant="outline">
-              <VisuallyHidden>Login with Github</VisuallyHidden>
-              <FaGithub />
-            </Button>
-          </SimpleGrid>
+          <SignUpForm
+            setUserName={setUserName}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            onSubmit={onSubmit}
+          />
         </Card>
       </Box>
     </Box>
