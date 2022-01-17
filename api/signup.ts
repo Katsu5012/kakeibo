@@ -16,19 +16,19 @@ export const signUpAPI = async (
       password
     );
 
-    console.log(signUpResult);
-
     /** databaseにユーザー登録 */
     const user = await fetch("http://localhost:3000/users", {
       method: "POST",
       body: JSON.stringify({
         name,
         email,
-        uid: signUpResult.user.uid,
+        firebase_uid: signUpResult.user.uid,
       }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
     });
-
-    console.log(user);
 
     const idToken = await signUpResult.user.getIdToken();
     const refreshToken = signUpResult.user.refreshToken;

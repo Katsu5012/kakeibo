@@ -1,27 +1,26 @@
-import {
-  Box,
-  Button,
-  Heading,
-  SimpleGrid,
-  useColorModeValue,
-  VisuallyHidden,
-} from "@chakra-ui/react";
+import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
 import * as React from "react";
 import { useState } from "react";
 import { Card } from "../components/atoms/app/Card";
 import { SignUpForm } from "../components/molecules/SignUpForm";
 import { NextPage } from "next";
 import { signUpAPI } from "../api/signup";
+import { useRouter } from "next/router";
 
 const SignUp: NextPage = () => {
   const [userName, setUserName] = useState("");
-  console.log(userName);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const onSubmit = async (e: React.FormEvent) => {
-    console.log(e);
-    await signUpAPI(userName, email, password);
+    try {
+      await signUpAPI(userName, email, password);
+      console.log("a");
+      router.push("/");
+    } catch (e) {
+      console.error(e);
+    }
   };
   return (
     <Box
